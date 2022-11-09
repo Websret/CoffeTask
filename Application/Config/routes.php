@@ -7,4 +7,5 @@ return [
     '^user/registry$' => 'user/registry',
     '^user/login$' => 'user/login',
     '^user/authorization$' => 'user/authorization',
+    '^user/logout$' => 'user/logout',
 ];
