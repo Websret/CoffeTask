@@ -12,8 +12,8 @@ class User extends Model
         try {
             $this->db->dbo->beginTransaction();
             $this->db->dbo
-                ->prepare('INSERT INTO workers (email, first_name, last_name, password, created_date)
-                                        VALUES (:email, :firstName, :lastName, :password, :data)')
+                ->prepare('INSERT INTO workers (email, first_name, last_name, password, created_date, dep_id)
+                                        VALUES (:email, :firstName, :lastName, :password, :data, :dep_id)')
                 ->execute($params);
             $this->db->dbo->commit();
         } catch (\Exception $e) {
@@ -70,5 +70,14 @@ class User extends Model
         $this->db->dbo
             ->prepare('DELETE FROM attackers WHERE ip_address = :ip')
             ->execute($params);
+    }
+
+    public function getAllDepartaments(): array
+    {
+        $stmt = $this->db->dbo
+            ->prepare('SELECT departament_name FROM departaments');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

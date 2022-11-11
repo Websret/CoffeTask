@@ -66,6 +66,102 @@ $(document).ready(function () {
             $('#validate').attr('disabled', true);
         }
     });
+    $('#formProductName').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length > 3) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
+    $('#formProductCost').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length > 0) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
+    $('#formFirstName').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length > 2) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
+    $('#formLastName').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length > 2) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
+    $('#formMobilePhone').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length === 11) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
+    $('#formDepartmentName').blur(function () {
+        if ($(this).val() !== '') {
+            if ($(this).val().length > 3) {
+                $(this).css({'border': '2px solid black'});
+                $('#validate').attr('disabled', false);
+            } else {
+                $(this).css({'border': '1px solid #ff0000'});
+                $('#validate').attr('disabled', true);
+            }
+
+        } else {
+            $(this).css({'border': '1px solid #ff0000'});
+            $('#nameValid').text('Enter password!');
+            $('#validate').attr('disabled', true);
+        }
+    });
 });
 
 function confirmation() {

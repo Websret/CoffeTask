@@ -1,8 +1,8 @@
 {% extends "layouts/default.twig" %}
 
-{% block title %}Registration page{% endblock %}
+{% block title %}Create employee page{% endblock %}
 
-{% block namepage %}Registration page{% endblock %}
+{% block namepage %}Create new employee{% endblock %}
 
 {% block content %}
     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -46,6 +46,18 @@
                     </div>
 
                     <div class="form-outline mb-2">
+                        <select name="formSelectDepartment" id="formSelectDepartment"
+                                class="form-control form-control-lg">
+                            {% for key, department in departmentsArray %}
+                                {% for dep in department %}
+                                    <option value="{{ key }}">{{ dep }}</option>
+                                {% endfor %}
+                            {% endfor %}
+                        </select>
+                        <label class="form-label" for="formSelectDepartment">Select department</label>
+                    </div>
+
+                    <div class="form-outline mb-2">
                         <input type="password" name="formPassword" id="formPassword"
                                class="form-control form-control-lg"/>
                         <label class="form-label" for="formPassword">Password</label>
@@ -59,13 +71,9 @@
 
                     <div class="d-flex justify-content-center">
                         <button type="submit" id="validate" disabled
-                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Create
                         </button>
                     </div>
-
-                    <p class="text-center text-muted mt-3 mb-0">Have already an account?
-                        <a href="/user/login" class="fw-bold text-body"><u>Login here</u></a>
-                    </p>
                 </form>
 
             </div>

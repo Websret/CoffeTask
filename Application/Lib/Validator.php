@@ -94,7 +94,17 @@ class Validator implements TwigImplementer
 
     private function isErrorsEmpty(): bool
     {
-        return empty($_SESSION['data']['errorMessage']);
+        $res = empty(($_SESSION['data']['errorMessage']));
+        $this->clearSessionData($res);
+        return $res;
+    }
+
+    private function clearSessionData(bool $result): void
+    {
+        if ($result) {
+            unset($_SESSION['data']['correctField']);
+            unset($_SESSION['data']['errorMessage']);
+        }
     }
 
     private function upperCase(string $param, int $value = null): bool
@@ -151,10 +161,37 @@ class Validator implements TwigImplementer
         return true;
     }
 
+    private function onlyInt(int $param): bool
+    {
+        if (!preg_match('/^[0-9]+$/', $param)) {
+            $this->errorMessage = "This field must contain only numbers.";
+            return false;
+        }
+        return true;
+    }
+
+    private function minValue(int $param, int $value): bool
+    {
+        if($param < $value) {
+            $this->errorMessage = "This field must be greater than " . $value . ".";
+            return false;
+        }
+        return true;
+    }
+
     private function isEmail(string $param): bool
     {
         if (!filter_var($param, FILTER_VALIDATE_EMAIL)) {
             $this->errorMessage = "Your email is not correct.";
+            return false;
+        }
+        return true;
+    }
+
+    private function isMobilePhone(string $param): bool
+    {
+        if(!preg_match('/^[0-9]{11,11}+$/', $param)) {
+            $this->errorMessage = "This field not must contain mobile phone.";
             return false;
         }
         return true;
@@ -165,7 +202,7 @@ class Validator implements TwigImplementer
         $row = $this->getMethodClass($param, $value);
 
         if ($row['total'] > 0) {
-            $this->errorMessage = "This email is already in use.";
+            $this->errorMessage = "Field with this name already in use.";
             return false;
         }
         return true;

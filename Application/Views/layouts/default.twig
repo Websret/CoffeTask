@@ -11,12 +11,24 @@
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">{% block namepage %}{% endblock %}</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/">Home</a>
-    </nav>
 
     {% if isAuth() %}
-        <a class="btn btn-outline-primary" onclick="return confirmation()" href="/user/logout">Logout</a>
+        <nav class="my-2 my-md-0 mr-md-3 my-nav">
+            <a class="p-2 text-dark" href="/">Orders</a>
+            <a class="p-2 text-dark" href="/">New order</a>
+            <a class="p-2 text-dark" href="/client/create">Add client</a>
+            <a class="p-2 text-dark" href="/product/create">Add product</a>
+            <div class="dropdown">
+                <a class="p-2 text-dark" href="/user/registration">Add employee <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/department/create">Add department</a>
+                </div>
+            </div>
+        </nav>
+        <a class="btn btn-outline-primary my-button" onclick="return confirmation()" href="/user/logout">Logout</a>
     {% else %}
         <a class="btn btn-outline-primary" href="/user/login">Sign up</a>
     {% endif %}
@@ -40,5 +52,6 @@ background-position: center">
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
 <script src="/public/js/validate.js"></script>
+<script src="/public/js/others.js"></script>
 </body>
 </html>

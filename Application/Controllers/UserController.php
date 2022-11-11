@@ -15,7 +15,12 @@ class UserController extends Controller
      */
     public function registrationAction(): void
     {
-        $this->view->render();
+        $this->isAuth();
+        $departaments = $this->model->getAllDepartaments();
+        $vars = [
+            'departmentsArray' => $departaments,
+        ];
+        $this->view->render($vars);
     }
 
     public function registryAction(): void
@@ -26,6 +31,7 @@ class UserController extends Controller
             'formConfirmEmail' => 'required',
             'formConfirmPassword' => 'required',
             'formEmail' => 'isEmail|min:4|isEqualTo:' . $_POST["formConfirmEmail"] . '|emailExist:' . User::class . ',email|required',
+            'formSelectDepartment' => 'onlyInt|required',
             'formPassword' => 'upperCase:1|lowerCase:1|checkDigit:1|specialCharacter:1|min:6|isEqualTo:' . $_POST["formConfirmPassword"] . '|required',
         ]);
 
@@ -39,9 +45,9 @@ class UserController extends Controller
             'lastName' => $_POST["formLastName"],
             'password' => password_hash($_POST["formPassword"], PASSWORD_DEFAULT),
             'data' => date('Y-m-d H:i:s'),
+            'dep_id' => ++$_POST["formSelectDepartment"],
         ];
         $this->model->addUser($params);
-        Auth::loginUser($params);
         $this->redirect();
     }
 
@@ -78,6 +84,13 @@ class UserController extends Controller
     {
         Auth::logoutAccount();
         $this->redirect();
+    }
+
+    private function isAuth(): void
+    {
+        if (!Auth::isAuth()) {
+            $this->view->redirect('/user/login');
+        }
     }
 
     private function redirect(): void
