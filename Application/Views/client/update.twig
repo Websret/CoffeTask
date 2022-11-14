@@ -1,0 +1,70 @@
+{% extends "layouts/default.twig" %}
+
+{% block title %}Update client{% endblock %}
+
+{% block namepage %}Update client{% endblock %}
+
+{% block content %}
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-2">Update order</h2>
+
+                <form action="/client/change" method="post">
+
+                    {% for key, errors in session.data.errorMessage %}
+                        {% for error in errors %}
+                            <ul>
+                                <li>{{ key }}: {{ error }}</li>
+                            </ul>
+                        {% endfor %}
+                    {% endfor %}
+                    {{ session.data.user.errorMessage }}
+
+                    {% for key, data in orderArray %}
+                        {% if key == 'id' %}
+                            <input type="text" name="formId" id="formId"
+                                   class="displayNone" value="{{ data }}"/>
+                        {% endif %}
+                    {% endfor %}
+
+                    <input type="text" name="formId" id="formId"
+                           class="displayNone" value="{{ clientArray.id }}"/>
+
+                    <div class="form-outline mb-2">
+                        <input type="text" name="formFirstName" id="formFirstName"
+                               class="form-control form-control-lg" value="{{ clientArray.client_first_name }}"/>
+                        <label class="form-label" for="formFirstName">First name</label>
+                    </div>
+
+                    <div class="form-outline mb-2">
+                        <input type="text" name="formLastName" id="formLastName"
+                               class="form-control form-control-lg" value="{{ clientArray.client_last_name }}"/>
+                        <label class="form-label" for="formLastName">Last name</label>
+                    </div>
+
+                    <div class="form-outline mb-2">
+                        <input type="text" name="formMobilePhone" id="formMobilePhone"
+                               class="form-control form-control-lg" value="{{ clientArray.mobile_phone }}"/>
+                        <label class="form-label" for="formMobilePhone">Mobile phone</label>
+                    </div>
+
+                    <div class="form-outline mb-2">
+                        <input type="email" name="formEmail" id="formEmail"
+                               class="form-control form-control-lg" value="{{ clientArray.email }}"/>
+                        <label class="form-label" for="formEmail">Email</label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="validate"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update
+                        </button>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -16,14 +16,23 @@
         <nav class="my-2 my-md-0 mr-md-3 my-nav">
             <a class="p-2 text-dark" href="/">Orders</a>
             <a class="p-2 text-dark" href="/main/create">New order</a>
-            <a class="p-2 text-dark" href="/client/create">Add client</a>
-            <a class="p-2 text-dark" href="/product/create">Add product</a>
             <div class="dropdown">
-                <a class="p-2 text-dark" href="/user/registration">Add employee <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <a class="p-2 text-dark" href="/client/show">Clients <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                         <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                     </svg>
                 </a>
                 <div class="dropdown-content">
+                    <a href="/client/create">Add client</a>
+                </div>
+            </div>
+            <a class="p-2 text-dark" href="/product/create">Add product</a>
+            <div class="dropdown">
+                <a class="p-2 text-dark" href="/user/show">Employees <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/user/registration">Add employee</a>
                     <a href="/department/create">Add department</a>
                 </div>
             </div>

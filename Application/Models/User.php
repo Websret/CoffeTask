@@ -80,4 +80,13 @@ class User extends Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getAllWorkers(): array
+    {
+        $stmt = $this->db->dbo
+            ->prepare('SELECT id, email, first_name, last_name, created_date FROM workers');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

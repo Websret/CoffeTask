@@ -9,6 +9,16 @@ use Application\Models\User;
 
 class UserController extends Controller
 {
+    public function showAction(): void
+    {
+        $this->isAuth();
+        $employees = $this->model->getAllWorkers();
+        $vars = [
+            'employeesArray' => $employees,
+        ];
+        $this->view->render($vars);
+    }
+
     /**
      * Render form
      * @return void

@@ -1,0 +1,33 @@
+{% extends "layouts/default.twig" %}
+
+{% block title %}All employees{% endblock %}
+
+{% block namepage %}Employees{% endblock %}
+
+{% block content %}
+    <div class="row g-3">
+        <table>
+            <thead>
+            <tr>
+                <th class="col-1">#</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Created date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, employee in employeesArray %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ employee.first_name }}</td>
+                    <td>{{ employee.last_name }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.created_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

@@ -56,7 +56,7 @@ CREATE TABLE `clients` (
   `mobile_phone` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,'Mark','Usetskiy','80291111111','markus@gmail.com'),(2,'John','Wood','80331111111','woOds@@gmail.com');
+INSERT INTO `clients` VALUES (2,'John','Woods','80331111111','woOds@gmail.com'),(3,'Maksim','Utyashev','80297777777','utyashev@mail.ru'),(4,'July','Teams','80291111112','jul@mail.com'),(5,'Kenny','West','80298888881','west@gmail.com'),(6,'Olga','Shamigov','80291111113','sham@gmail.com');
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,10 +110,10 @@ CREATE TABLE `orders` (
   KEY `ordersProduct_id` (`order_product_id`),
   KEY `orders_clients_fk` (`order_client_id`),
   KEY `orders_workers_null_fk` (`employee_id`),
-  CONSTRAINT `orders_clients_fk` FOREIGN KEY (`order_client_id`) REFERENCES `clients` (`id`),
+  CONSTRAINT `orders_clients_fk` FOREIGN KEY (`order_client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orders_workers_null_fk` FOREIGN KEY (`employee_id`) REFERENCES `workers` (`id`),
   CONSTRAINT `ordersProduct_id` FOREIGN KEY (`order_product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,4,1,6,'2022-11-11 13:23:56'),(6,4,1,25,'2022-11-14 08:25:28'),(9,2,1,6,'2022-11-14 09:54:30'),(10,5,2,9,'2022-11-14 09:54:56');
+INSERT INTO `orders` VALUES (10,5,2,9,'2022-11-14 09:54:56'),(12,2,4,10,'2022-11-14 14:21:56'),(13,5,5,10,'2022-11-14 14:22:50'),(14,6,3,10,'2022-11-14 14:22:58'),(15,4,6,10,'2022-11-14 14:23:36');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,4 +192,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-14 13:48:59
+-- Dump completed on 2022-11-14 15:24:46
