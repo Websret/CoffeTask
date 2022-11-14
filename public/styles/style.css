@@ -37,6 +37,10 @@ table tbody tr:nth-child(odd) td {
     background: #f4f4f4;
 }
 
+tbody {
+    background: #dededee8;
+}
+
 .displayNone {
     display: none;
 }

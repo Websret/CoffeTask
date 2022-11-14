@@ -69,6 +69,7 @@ class Auth implements TwigImplementer
     {
         $_SESSION['data']['user'] = [
             'name' => $this->userData[0]['first_name'],
+            'email' => $this->userData[0]['email'],
             'authenticated' => $valid,
             'errorMessage' => $this->errorMessage,
         ];

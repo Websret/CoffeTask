@@ -2,7 +2,11 @@
 
 return [
     '^$' => 'main/index',
-    '^main/upload$' => 'main/upload',
+    '^main/update/([0-9]+)$' => 'main/update/$1',
+    '^main/change' => 'main/change',
+    '^main/delete/([0-9]+)$' => 'main/delete/$1',
+    '^main/add$' => 'main/add',
+    '^main/create$' => 'main/create',
     '^user/registration$' => 'user/registration',
     '^user/registry$' => 'user/registry',
     '^user/login$' => 'user/login',

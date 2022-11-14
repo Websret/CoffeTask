@@ -1,0 +1,72 @@
+{% extends "layouts/default.twig" %}
+
+{% block title %}Update order{% endblock %}
+
+{% block namepage %}Update order{% endblock %}
+
+{% block content %}
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-2">Update order</h2>
+
+                <form action="/main/change" method="post">
+
+                    {% for key, errors in session.data.errorMessage %}
+                        {% for error in errors %}
+                            <ul>
+                                <li>{{ key }}: {{ error }}</li>
+                            </ul>
+                        {% endfor %}
+                    {% endfor %}
+                    {{ session.data.user.errorMessage }}
+
+                    {% for key, data in orderArray %}
+                        {% if key == 'id' %}
+                            <input type="text" name="formId" id="formId"
+                                   class="displayNone" value="{{ data }}"/>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="form-outline mb-2">
+                        <select name="formSelectClient" id="formSelectClient"
+                                class="form-control form-control-lg">
+                            {% for key, data in dataArray %}
+                                {% if key == 'clients' %}
+                                    {% for keyDat, dat in data %}
+                                        <option value="{{ keyDat }}">{{ dat }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <label class="form-label" for="formFirstName">Client</label>
+                    </div>
+
+                    <div class="form-outline mb-2">
+                        <select name="formSelectProduct" id="formSelectProduct"
+                                class="form-control form-control-lg">
+                            {% for key, data in dataArray %}
+                                {% if key == 'products' %}
+                                    {% for datakey, product in data %}
+
+                                            <option value="{{ datakey }}">{{ product }}</option>
+
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <label class="form-label" for="formLastName">Product</label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="validate"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

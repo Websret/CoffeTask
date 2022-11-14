@@ -19,7 +19,7 @@ class Validator implements TwigImplementer
 
     public function validate(): bool
     {
-        unset($_SESSION['data']);
+        unset($_SESSION['data']['user']['errorMessage']);
         foreach ($this->params as $param => $implodedRules) {
             $rules = explode('|', $implodedRules);
 
