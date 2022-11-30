@@ -175,7 +175,7 @@ class Auth implements TwigImplementer
     private function deleteCookie(): void
     {
         setcookie("email", "", time() - 3600 * 24 * 30 * 12, "/");
-        setcookie("token", "", time() - 3600 * 24 * 30 * 12, "/", null, null, true);
+        setcookie("token", "", time() - 3600 * 24 * 30 * 12, "/", true);
         unset($_COOKIE["email"]);
         unset($_COOKIE["token"]);
     }
