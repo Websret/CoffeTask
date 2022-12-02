@@ -1,3 +1,5 @@
+version: '3.3'
+
 services:
 
     app:
@@ -34,7 +36,3 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         volumes:
             -   ./docker-compose/mysql:/docker-entrypoint-initdb.d
-
-networks:
-    shop:
-        driver: bridge
